@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <title>Daftar Unit Apartemen</title>
+    <script>
+        async function fetchUnits() {
+            const response = await fetch("http://127.0.0.1:5000/unit");
+            const units = await response.json();
+            let list = "";
+            units.forEach(u => {
+                list += `<li>${u.nomor_unit} - Rp${u.harga_sewa}</li>`;
+            });
+            document.getElementById("unit-list").innerHTML = list;
+        }
+    </script>
+</head>
+<body onload="fetchUnits()">
+    <h1>Daftar Unit Tersedia</h1>
+    <ul id="unit-list"></ul>
+</body>
+</html>
